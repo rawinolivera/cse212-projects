@@ -43,6 +43,9 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+            var key = int.Parse(fields[0]);
+            var degree = fields[3];
+            degrees.Add(degree, key);
         }
 
         return degrees;
@@ -67,7 +70,31 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        var words = new Dictionary<string, string>();
+        words.Add(word1, word2);
+        var word = words[word1];
+        var second = words[word2];
+
+        int size = second.Length;
+        foreach (char letra in word)
+        {
+            if (letra == second[size])
+            {
+                size--;
+            }
+            else
+            {
+                break;
+            }
+        }
+        if (size == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /// <summary>
